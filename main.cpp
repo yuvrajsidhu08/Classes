@@ -39,3 +39,51 @@ void add(std::vector<DigitalMedia*>& v) {
         v.push_back(x);
     }
 }
+void search(std::vector<DigitalMedia*>& v) {
+    char mode[10]; std::cout << "Search TITLE/YEAR: "; std::cin >> mode;
+    if (!strcmp(mode, "TITLE")) {
+        char t[100]; std::cout << "Title: "; std::cin.ignore(); std::cin.getline(t, 100);
+        for (auto m : v) if (!strcmp(m->getTitle(), t)) m->print();
+    } else {
+        int y; std::cout << "Year: "; std::cin >> y;
+        for (auto m : v) if (m->getYear() == y) m->print();
+    }
+}
+
+void del(std::vector<DigitalMedia*>& v) {
+    char mode[10]; std::cout << "Delete TITLE/YEAR: "; std::cin >> mode;
+    std::vector<int> idx;
+    if (!strcmp(mode, "TITLE")) {
+        char t[100]; std::cout << "Title: "; std::cin.ignore(); std::cin.getline(t, 100);
+        for (int i = 0; i < v.size(); i++) if (!strcmp(v[i]->getTitle(), t)) idx.push_back(i);
+    } else {
+        int y; std::cout << "Year: "; std::cin >> y;
+        for (int i = 0; i < v.size(); i++) if (v[i]->getYear() == y) idx.push_back(i);
+    }
+
+    for (int i = idx.size() - 1; i >= 0; i--) {
+        std::cout << "Delete this?\n"; v[idx[i]]->print();
+        char c[10]; std::cin >> c;
+        if (!strcmp(c, "YES")) {
+            delete v[idx[i]];
+            v.erase(v.begin() + idx[i]);
+        }
+    }
+}
+
+int main() {
+    std::vector<DigitalMedia*> v;
+    char cmd[20];
+
+    while (true) {
+        std::cout << "\nCommand (ADD SEARCH DELETE QUIT): ";
+        std::cin >> cmd;
+
+        if (!strcmp(cmd, "ADD")) add(v);
+        else if (!strcmp(cmd, "SEARCH")) search(v);
+        else if (!strcmp(cmd, "DELETE")) del(v);
+        else if (!strcmp(cmd, "QUIT")) break;
+    }
+
+    for (auto m : v) delete m;
+}
