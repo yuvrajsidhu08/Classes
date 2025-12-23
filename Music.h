@@ -7,37 +7,22 @@
 class Music : public DigitalMedia {
 public:
     // Default constructor: clears strings and sets duration to 0
-    Music() { 
-        artist[0] = publisher[0] = '\0'; 
-        duration = 0; 
-    }
+    Music();
 
     // Default destructor
-    ~Music() {}
+    ~Music();
 
     // Sets the artist name
-    void setArtist(const char* a) { 
-        strcpy(artist, a); 
-    }
+    void setArtist(const char* a);
 
     // Sets the publisher name
-    void setPublisher(const char* p) { 
-        strcpy(publisher, p); 
-    }
+    void setPublisher(const char* p);
 
     // Sets the music duration
-    void setDuration(int d) { 
-        duration = d; 
-    }
+    void setDuration(int d);
 
     // Prints all music information
-    void print() {
-        std::cout << "MUSIC\nTitle: " << title
-                  << "\nArtist: " << artist
-                  << "\nYear: " << year
-                  << "\nDuration: " << duration
-                  << "\nPublisher: " << publisher << "\n";
-    }
+    void print();
 
 private:
     char artist[100], publisher[100]; // Stores artist and publisher

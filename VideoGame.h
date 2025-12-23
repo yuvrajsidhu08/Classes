@@ -7,30 +7,19 @@
 class VideoGame : public DigitalMedia {
 public:
     // Default constructor: clears publisher and rating
-    VideoGame() { 
-        publisher[0] = rating[0] = '\0'; 
-    }
+    VideoGame();
 
     // Default destructor
-    ~VideoGame() {}
+    ~VideoGame();
 
     // Sets the publisher
-    void setPublisher(const char* p) { 
-        strcpy(publisher, p); 
-    }
+    void setPublisher(const char* p);
 
     // Sets the rating
-    void setRating(const char* r) { 
-        strcpy(rating, r); 
-    }
+    void setRating(const char* r);
 
     // Prints all video game information
-    void print() {
-        std::cout << "VIDEO GAME\nTitle: " << title
-                  << "\nYear: " << year
-                  << "\nPublisher: " << publisher
-                  << "\nRating: " << rating << "\n";
-    }
+    void print();
 
 private:
     char publisher[100], rating[20];

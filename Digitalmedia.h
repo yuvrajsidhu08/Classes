@@ -1,47 +1,33 @@
 #ifndef DIGITALMEDIA_H
 #define DIGITALMEDIA_H
 
-#include <iostream>
-#include <cstring>
-
 // Base class for all digital media types
 class DigitalMedia {
 public:
     // Default constructor: clears title and sets year to 0
-    DigitalMedia() { 
-        title[0] = '\0'; 
-        year = 0; 
-    }
+    DigitalMedia();
 
     // Virtual destructor
-    virtual ~DigitalMedia() {}
+    virtual ~DigitalMedia();
 
     // Sets the title
-    void setTitle(const char* t) { 
-        strcpy(title, t); 
-    }
+    void setTitle(const char* t);
 
     // Sets the year
-    void setYear(int y) { 
-        year = y; 
-    }
+    void setYear(int y);
 
     // Returns the title
-    char* getTitle() { 
-        return title; 
-    }
+    char* getTitle();
 
     // Returns the year
-    int getYear() { 
-        return year; 
-    }
+    int getYear();
 
     // Prints the media info (implemented by subclasses)
     virtual void print() = 0;
 
 protected:
-    char title[100]; 
-    int year;        
+    char title[100];
+    int year;
 };
 
 #endif

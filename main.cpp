@@ -54,7 +54,7 @@ void search(std::vector<DigitalMedia*>& v) {
         for (auto m : v) if (!strcmp(m->getTitle(), t)) m->print();
     } 
     // Search by year
-    else {
+    else if (!strcmp(mode, "YEAR")) {
         int y; std::cout << "Year: "; std::cin >> y;
         for (auto m : v) if (m->getYear() == y) m->print();
     }
@@ -71,7 +71,7 @@ void del(std::vector<DigitalMedia*>& v) {
         for (int i = 0; i < v.size(); i++) if (!strcmp(v[i]->getTitle(), t)) idx.push_back(i);
     } 
     // Find matches by year
-    else {
+    else if (!strcmp(mode, "YEAR")) {
         int y; std::cout << "Year: "; std::cin >> y;
         for (int i = 0; i < v.size(); i++) if (v[i]->getYear() == y) idx.push_back(i);
     }
@@ -107,4 +107,6 @@ int main() {
 
     // Clean up memory
     for (auto m : v) delete m;
+
+    return 0;
 }
